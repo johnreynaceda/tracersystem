@@ -4,11 +4,11 @@
             class="font-bold" />
     </div>
     <div>
-        {{ $this->table }}
+        {{-- //table --}}
     </div>
     <x-modal wire:model.defer="add_modal" max-width="6xl">
         <x-card title="Upload Gallery">
-            <div>{{ $this->form }}</div>
+            {{-- <div>{{ $this->form }}</div> --}}
 
             <x-slot name="footer">
                 <div class="flex justify-end gap-x-4">

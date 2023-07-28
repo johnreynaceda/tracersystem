@@ -10,15 +10,7 @@
                         </p>
 
                     </div>
-                    <div class="flex flex-col items-center justify-center gap-3 mt-20 lg:flex-row">
-                        <div class="grid grid-cols-5">
-                            @foreach (\App\Models\Gallery::all() as $item)
-                                <img src="{{ Storage::url($item->gallery_path) }}" class=" h-full border object-cover"
-                                    alt="">
-                            @endforeach
-                        </div>
 
-                    </div>
                 </div>
 
 

@@ -4,14 +4,14 @@
             rounded />
     </div>
     <div>
-        {{-- //table --}}
+        {{ $this->table }}
     </div>
 
     <x-modal wire:model.defer="add_modal" max-width="4xl">
         <x-card>
-            {{-- <div>
+            <div>
                 {{ $this->form }}
-            </div> --}}
+            </div>
 
             <x-slot name="footer">
                 <div class="flex justify-end gap-x-4">

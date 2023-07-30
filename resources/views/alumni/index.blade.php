@@ -24,7 +24,7 @@
                     </div>
                 </div>
 
-                {{-- <div>
+                <div>
                     <div class="">
                         <h1 class="px-4 text-3xl font-bold text-white mx-auto  sm:px-6  lg:px-8">UPCOMING EVENTS</h1>
                         <div class="px-4 py-10 mx-auto max-w-7xl sm:px-6 lg:py-5 lg:px-8 space-y-3">
@@ -55,7 +55,7 @@
                             @endforelse
                         </div>
                     </div>
-                </div> --}}
+                </div>
             </div>
         </section>
 

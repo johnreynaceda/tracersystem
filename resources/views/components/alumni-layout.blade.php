@@ -65,7 +65,8 @@
                     href="{{ route('alumni.gallery') }}">
                     Gallery
                 </a>
-                <a class="px-2 py-2 text-white lg:px-6 md:px-3 font-medium hover:text-gray-400" href="#">
+                <a class="px-2 py-2 text-white lg:px-6 md:px-3 font-medium hover:text-gray-400"
+                    href="{{ route('alumni.about') }}">
                     About
                 </a>
 

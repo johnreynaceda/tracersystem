@@ -42,6 +42,9 @@ Route::prefix('alumni')->middleware(['auth'])->group(function () {
     Route::get('/gallery', function () {
         return view('alumni.gallery');
     })->name('alumni.gallery');
+    Route::get('/about', function () {
+        return view('alumni.about');
+    })->name('alumni.about');
 
 });
 

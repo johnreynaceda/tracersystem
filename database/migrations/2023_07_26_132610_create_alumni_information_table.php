@@ -19,8 +19,8 @@ return new class extends Migration {
             $table->string('gender');
             $table->string('contact_number');
             $table->string('batch');
-            $table->string('course');
-            $table->string('short_course');
+            $table->string('course')->nullable();
+            $table->string('short_course')->nullable();
             $table->string('status');
             $table->string('civil_status');
             $table->string('connected');

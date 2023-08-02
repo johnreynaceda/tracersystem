@@ -10,10 +10,16 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\ViewColumn;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AlumniExport;
 
 class AlumniList extends Component implements Tables\Contracts\HasTable
 {
     use Tables\Concerns\InteractsWithTable;
+
+    public $view_modal = false;
+    public $alumni_data = [];
+
     public function render()
     {
         return view('livewire.admin.alumni-list');
@@ -35,17 +41,32 @@ class AlumniList extends Component implements Tables\Contracts\HasTable
             )->searchable(),
             Tables\Columns\TextColumn::make('contact_number')->label('CONTACT NUMBER')->searchable(),
             Tables\Columns\TextColumn::make('batch')->label('BATCH')->searchable(),
-            Tables\Columns\TextColumn::make('course')->label('COURSE')->searchable(),
+            Tables\Columns\TextColumn::make('course')->label('COURSE')->searchable()->formatStateUsing(
+                function ($record) {
+                    return $record->course == null ? $record->short_course : $record->course;
+                }
+
+            ),
 
 
         ];
 
     }
 
+    public function exportReport()
+    {
+        return Excel::download(new AlumniExport, 'AlumniExport.xlsx');
+    }
+
     protected function getTableActions(): array
     {
         return [
-            Tables\Actions\Action::make('view')->icon('heroicon-o-eye')->color('warning'),
+            Tables\Actions\Action::make('view')->icon('heroicon-o-eye')->color('warning')->action(
+                function ($record) {
+                    $this->alumni_data = $record;
+                    $this->view_modal = true;
+                }
+            ),
             Tables\Actions\DeleteAction::make(),
         ];
     }

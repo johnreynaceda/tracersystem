@@ -99,8 +99,6 @@ class SubmitForm extends Component implements Forms\Contracts\HasForms
             'middlename' => 'required',
             'gender' => 'required',
             'batch' => 'required',
-            'course' => 'required',
-            'short_course' => 'required',
             'contact_number' => 'required',
             'status' => 'required',
             'civil' => 'required',

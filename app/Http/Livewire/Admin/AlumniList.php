@@ -38,7 +38,11 @@ class AlumniList extends Component implements Tables\Contracts\HasTable
                 function ($record) {
                     return $record->firstname . ' ' . $record->middlename . ' ' . $record->lastname;
                 }
-            )->searchable(),
+            )->searchable([
+                        'firstname',
+                        'middlename',
+                        'lastname',
+                    ]),
             Tables\Columns\TextColumn::make('contact_number')->label('CONTACT NUMBER')->searchable(),
             Tables\Columns\TextColumn::make('batch')->label('BATCH')->searchable(),
             Tables\Columns\TextColumn::make('course')->label('COURSE')->searchable()->formatStateUsing(

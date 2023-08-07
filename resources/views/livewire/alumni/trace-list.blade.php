@@ -28,7 +28,7 @@
     </section>
     <div class="mt-10 -mx-56 grid grid-cols-4 gap-5">
         @forelse ($alumnis as $alumni)
-            <div class="bg-white  rounded-2xl p-5 relative shadow-lg overflow-hidden">
+            <div wire:loading.remove class="bg-white  rounded-2xl p-5 relative shadow-lg overflow-hidden">
                 <img src="{{ asset('images/seclogo.png') }}" class="absolute -bottom-20 left-0 opacity-5"
                     alt="">
                 <div class="flex relative space-x-4 items-start">
@@ -42,7 +42,9 @@
                         </center>
                         <div class="mt-2">
                             <p class="truncate">Email: <span class="font-semibold">{{ $alumni->user->email }}</span></p>
-                            <p class="truncate">Course: <span class="font-semibold">BS INFORMATION TECHNOLOGY</span></p>
+                            <p class="truncate">Course: <span
+                                    class="font-semibold">{{ $alumni->course ? $alumni->course : $alumni->short_course }}</span>
+                            </p>
                             <p class="truncate">Batch: <span class="font-semibold">{{ $alumni->batch }}</span></p>
                             <p class="truncate">Currently Working in/as: </p>
                             @if ($alumni->status == 'Employed')
@@ -54,20 +56,94 @@
                     </div>
                 </div>
             </div>
-        @empty
-            <div class="col-span-4">
-                <div class="bg-white  rounded-2xl p-5 relative shadow-lg overflow-hidden">
-                    <div class="flex relative space-x-4 items-start">
-                        <div class="flex-1 relative overflow-hidden">
-                            <center class="border-b border-blue-700">
-                                <h1 class="text-xl font-bold uppercase text-gray-900">
-                                    No Alumni Found
-                                </h1>
-                            </center>
-                        </div>
+            <div wire:loading>
+
+                <div class="w-full mb-3">
+                    <div class=" px-4 w-full  py-6 lg:py-4  sm:p-6 sm:rounded-lg lg:rounded-lg">
+                        <article aria-labelledby="question-title-81614">
+                            <div>
+                                <div class="flex space-x-3">
+                                    <div class="flex-shrink-0">
+                                        <div class="h-10 w-10 bg-gray-200 rounded-md  animate-pulse"></div>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <p
+                                            class="text-sm font-bold text-gray-200 bg-gray-200 animate-pulse rounded-md ">
+                                            <a href="#" class="hover:underline">adsadsadaddsadssddasd</a>
+                                        </p>
+                                        <p class="text-sm mt-1 text-gray-200 bg-gray-200 animate-pulse rounded-md">
+                                            <a href="#" class="hover:underline">
+                                                <time datetime="2020-12-09T11:43:00">asdasdasdsadasdsadsad</time>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="flex-shrink-0 self-center flex">
+                                        <div class="relative inline-block text-left">
+                                            <div>
+                                                {{-- <button type="button"
+                                                    class="-m-2 p-2 rounded-full  flex items-center text-gray-400 hover:text-gray-600"
+                                                    id="options-menu-0-button" aria-expanded="false" aria-haspopup="true">
+                                                    <span class="sr-only">Open options</span>
+                                                    <!-- Heroicon name: solid/dots-vertical -->
+                                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path
+                                                            d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                                                    </svg>
+                                                </button> --}}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div
+                                class="mt-2 text-md font-semibold animate-pulse text-gray-200 bg-gray-200 rounded-md space-y-4">
+                                <p>asdasdasdasdasdsadsadasdsad</p>
+
+                            </div>
+                            <div
+                                class="mt-1 text-md font-semibold animate-pulse text-gray-200 bg-gray-200 rounded-md space-y-4">
+                                <p>asdasdasdasdasdsadsadasdsad</p>
+
+                            </div>
+
+                            <div class="mt-4 flex justify-between space-x-8">
+                                <div class="flex space-x-6">
+
+                                    <span class="inline-flex items-center text-sm">
+                                        <a href="" type="button"
+                                            class="inline-flex space-x-1 text-main hover:text-gray-500">
+                                            <!-- Heroicon name: solid/chat-alt -->
+
+                                            </svg>
+                                            <span
+                                                class="font-semibold text-gray-200 bg-gray-200 animate-pulse rounded-md">sad</span>
+                                            <span class="sr-only">replies</span>
+                                        </a>
+                                    </span>
+
+                                </div>
+                                <div class="flex text-sm ">
+                                    <span
+                                        class="inline-flex items-center text-sm text-main cursor-pointer hover:text-main">
+
+                                    </span>
+                                </div>
+                            </div>
+                        </article>
+                        </li>
+                    </div>
+
+                </div>
+            @empty
+
+                <div class="col-span-4 w-full">
+                    <div class="flex justify-center items-center">
+                        <span class="text-xl text-white">No ALumni Record...</span>
                     </div>
                 </div>
-            </div>
         @endforelse
     </div>
 </div>

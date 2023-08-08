@@ -27,7 +27,7 @@
         </div>
     </section>
     <div class="mt-10 -mx-56 grid grid-cols-4 gap-5">
-        @forelse ($alumnis as $alumni)
+        {{-- @forelse ($alumnis as $alumni)
             <div wire:loading.remove class="bg-white  rounded-2xl p-5 relative shadow-lg overflow-hidden">
                 <img src="{{ asset('images/seclogo.png') }}" class="absolute -bottom-20 left-0 opacity-5"
                     alt="">
@@ -80,17 +80,7 @@
                                     <div class="flex-shrink-0 self-center flex">
                                         <div class="relative inline-block text-left">
                                             <div>
-                                                {{-- <button type="button"
-                                                    class="-m-2 p-2 rounded-full  flex items-center text-gray-400 hover:text-gray-600"
-                                                    id="options-menu-0-button" aria-expanded="false" aria-haspopup="true">
-                                                    <span class="sr-only">Open options</span>
-                                                    <!-- Heroicon name: solid/dots-vertical -->
-                                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                        <path
-                                                            d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-                                                    </svg>
-                                                </button> --}}
+
                                             </div>
 
                                         </div>
@@ -144,6 +134,42 @@
                         <span class="text-xl text-white">No ALumni Record...</span>
                     </div>
                 </div>
+        @endforelse --}}
+
+        @forelse ($alumnis as $alumni)
+            <div wire:loading.remove class="bg-white  rounded-2xl p-5 relative shadow-lg overflow-hidden">
+                <img src="{{ asset('images/seclogo.png') }}" class="absolute -bottom-20 left-0 opacity-5"
+                    alt="">
+                <div class="flex relative space-x-4 items-start">
+                    <img src="{{ Storage::url($alumni->attachment) }}" alt=""
+                        class="h-24 w-24 object-cover border-2 border-gray-400 rounded-2xl">
+                    <div class="flex-1 relative overflow-hidden">
+                        <center class="border-b border-blue-700">
+                            <h1 class="text-xl font-bold uppercase text-gray-900">
+                                {{ $alumni->firstname . ' ' . $alumni->lastname }}
+                            </h1>
+                        </center>
+                        <div class="mt-2">
+                            <p class="truncate">Email: <span class="font-semibold">{{ $alumni->user->email }}</span></p>
+                            <p class="truncate">Course: <span
+                                    class="font-semibold">{{ $alumni->course ? $alumni->course : $alumni->short_course }}</span>
+                            </p>
+                            <p class="truncate">Batch: <span class="font-semibold">{{ $alumni->batch }}</span></p>
+                            <p class="truncate">Currently Working in/as: </p>
+                            @if ($alumni->status == 'Employed')
+                                {{ $alumni->employer }}
+                            @else
+                                {{ $alumni->status }}
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @empty <div class="col-span-4 w-full">
+                <div class="flex justify-center items-center">
+                    <span class="text-xl text-white">No ALumni Record...</span>
+                </div>
+            </div>
         @endforelse
     </div>
 </div>

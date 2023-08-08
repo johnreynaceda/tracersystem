@@ -1,32 +1,28 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\AlumniInformation;
 use Filament\Tables;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
-use Filament\Tables\Actions\Action;
+use App\Models\AlumniInformation;
 use Filament\Tables\Columns\ViewColumn;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\AlumniExport;
+use Filament\Tables\Actions\Action;
+use Filament\Notifications\Notification;
 
-class AlumniList extends Component implements Tables\Contracts\HasTable
+class AdminDashboard extends Component implements Tables\Contracts\HasTable
 {
     use Tables\Concerns\InteractsWithTable;
 
-    public $view_modal = false;
-    public $alumni_data = [];
+    protected function getTableQuery(): Builder
+    {
+        return AlumniInformation::query()->where('is_verified', 0);
+    }
 
     public function render()
     {
-        return view('livewire.admin.alumni-list');
-    }
-    protected function getTableQuery(): Builder
-    {
-        return AlumniInformation::query()->where('is_verified', 1);
+        return view('livewire.admin-dashboard');
     }
 
     protected function getTableColumns(): array
@@ -55,24 +51,24 @@ class AlumniList extends Component implements Tables\Contracts\HasTable
 
         ];
 
-    }
 
-    public function exportReport()
-    {
-        return Excel::download(new AlumniExport, 'AlumniExport.xlsx');
+
     }
 
     protected function getTableActions(): array
     {
         return [
-            Tables\Actions\Action::make('view')->icon('heroicon-o-eye')->color('warning')->action(
-                function ($record) {
-                    $this->alumni_data = $record;
-                    $this->view_modal = true;
-                }
-            ),
-            Tables\Actions\DeleteAction::make(),
+            Action::make('Approve')->button()->label('Approved')->icon('heroicon-o-thumb-up')->color('success')->action(function ($record) {
+                $record->update([
+                    'is_verified' => 1,
+                ]);
+                Notification::make()
+                    ->title('Approve successfully')
+                    ->success()
+                    ->send();
+            }),
         ];
     }
+
 
 }

@@ -47,5 +47,8 @@
                 </div>
             </div>
         </div>
+        <div class="mt-10">
+            <livewire:admin-dashboard />
+        </div>
     </div>
 </x-admin-layout>

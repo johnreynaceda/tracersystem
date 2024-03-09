@@ -26,18 +26,19 @@
     @stack('scripts')
 </head>
 
-<body class="font-sans antialiased bg-gray-700">
+<body class="font-sans antialiased bg-green-800">
     <div class="absolute top-0 right-0 left-0 bottom-0">
-        <img src="{{ asset('images/18.JPG') }}" class="h-full w-full opacity-10 object-cover" alt="">
+        <img src="{{ asset('images/school_bg.jpg') }}" class="h-full w-full opacity-20 object-cover" alt="">
     </div>
-    <div class="w-full border-b border-gray-500 ">
+    <div class="w-full border-b border-white ">
         <div x-data="{ open: false }"
             class="relative 2xl:max-w-7xl flex flex-col w-full pt-5 pb-3 mx-auto  md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div class="flex flex-row items-center justify-between lg:justify-start">
-                <a class="text-lg tracking-tight font-black text-white uppercase focus:outline-none focus:ring lg:text-2xl"
+                <a class="text-lg tracking-tight flex space-x-2 items-center font-black text-white uppercase focus:outline-none focus:ring lg:text-2xl"
                     href="/">
+                    <img src="{{ asset('images/kabuling_logo.png') }}" class="h-10 w-10" alt="">
                     <span class="lg:text-xl uppecase focus:ring-0">
-                        TVET TRACER SYSTEM
+                        KLCI TRACER SYSTEM
                     </span>
                 </a>
                 <button @click="open = !open"

@@ -6,17 +6,17 @@
                 <div class=" mx-auto text-center lg:p-10">
                     <div>
                         <p class="mt-8  text-5xl font-black tracking-tighter text-white">
-                            WELCOME TO SURIGAO EDUCATION CENTER ALUMNI TRACER SYSTEM
+                            WELCOME TO KABULING LEARNING CENTER INC. TRACER SYSTEM
                         </p>
                         <p class="max-w-xl mx-auto mt-4 text-lg tracking-tight text-gray-200">
-                            If you could kick the person in the pants responsible for most of your
-                            trouble, you wouldn't sit for a month
+                            An alumni tracer is a system or program designed to track and maintain contact with former
+                            students or graduates of an educational institution.
                         </p>
                     </div>
                     <div class="flex flex-col items-center justify-center gap-3 mt-20 lg:flex-row">
                         @if (auth()->user()->is_submitted == 0)
                             <a href="{{ route('alumni.alumni-form') }}"
-                                class="items-center justify-center w-full px-6 py-2.5 uppercase  text-center text-gray-400 duration-200 bg-transparent border-2 border-gray-400 rounded-full inline-flex text-lg hover:bg-transparent hover:border-white hover:text-white focus:outline-none lg:w-auto focus-visible:outline-black  focus-visible:ring-black">
+                                class="items-center justify-center w-full px-6 py-2.5 uppercase  text-center text-white duration-200 bg-transparent border-2 border-white rounded-full inline-flex text-lg hover:bg-transparent hover:bg-white hover:text-green-600 focus:outline-none lg:w-auto focus-visible:outline-black  focus-visible:ring-black">
                                 GO TO ALUMNUS/ALUMNAE FORM
                             </a>
                         @endif

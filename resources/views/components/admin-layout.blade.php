@@ -28,18 +28,18 @@
 
 <body class="font-sans antialiased">
 
-    <div class="flex h-screen overflow-hidden relative bg-gray-100">
-        <img src="{{ asset('images/18.JPG') }}" class="absolute top-0 w-full h-full object-cover opacity-10"
+    <div class="flex h-screen overflow-hidden relative bg-green-700">
+        <img src="{{ asset('images/school_bg.jpg') }}" class="absolute top-0 w-full h-full object-cover opacity-10"
             alt="">
         <div class="hidden md:flex md:flex-shrink-0">
             <div class="flex flex-col w-64">
-                <div class="flex flex-col flex-grow pt-5 overflow-y-auto relative bg-gray-700 bg-opacity-30 border-r">
+                <div class="flex flex-col flex-grow pt-5 overflow-y-auto relative bg-gray-700 bg-opacity-50 border-r">
                     <div class="flex flex-col flex-shrink-0 px-4">
-                        <a class="text-lg font-semibold tracking-tighter text-gray-700 focus:outline-none focus:ring "
+                        <a class="text-lg font-semibold tracking-tighter text-white focus:outline-none focus:ring "
                             href="/">
                             <div class="flex flex-col items-center">
-                                <img src="{{ asset('images/seclogo.png') }}" class="h-10 " alt="">
-                                <span> TVET TRACER SYSTEM</span>
+                                <img src="{{ asset('images/kabuling_logo.png') }}" class="h-10 " alt="">
+                                <span> KLCI TRACER SYSTEM</span>
                             </div>
                         </a>
                         <button class="hidden rounded-lg focus:outline-none focus:shadow-outline">
@@ -55,12 +55,12 @@
                     </div>
                     <div class="flex flex-col flex-grow px-4 mt-10 relative">
                         <nav class="flex-1 space-y-1 ">
-                            <p class="px-4 pt-4 text-xs font-semibold text-gray-700 uppercase">
+                            <p class="px-4 pt-4 text-xs font-semibold text-white uppercase">
                                 Manage
                             </p>
                             <ul>
                                 <li>
-                                    <a class="{{ request()->routeIs('admin.dashboard') ? 'bg-gray-100 scale-95' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-gray-700 fill-gray-700 font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-gray-800"
+                                    <a class="{{ request()->routeIs('admin.dashboard') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-white fill-white font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
                                         href="{{ route('admin.dashboard') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                             <path
@@ -73,7 +73,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="{{ request()->routeIs('admin.gallery') ? 'bg-gray-100 scale-95' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-gray-700 fill-gray-700 font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-gray-800"
+                                    <a class="{{ request()->routeIs('admin.gallery') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-white fill-white font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
                                         href="{{ route('admin.gallery') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                             <path
@@ -86,7 +86,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class=" {{ request()->routeIs('admin.course-list') ? 'bg-gray-100 scale-95' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-gray-700 fill-gray-700 font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-gray-800"
+                                    <a class=" {{ request()->routeIs('admin.course-list') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-white fill-white font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
                                         href="{{ route('admin.course-list') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                             <path
@@ -99,7 +99,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="{{ request()->routeIs('admin.alumni') ? 'bg-gray-100 scale-95' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-gray-700 fill-gray-700 font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-gray-800"
+                                    <a class="{{ request()->routeIs('admin.alumni') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-white fill-white font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
                                         href="{{ route('admin.alumni') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                             <path
@@ -112,7 +112,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="{{ request()->routeIs('admin.events') ? 'bg-gray-100 scale-95' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-gray-700 fill-gray-700 font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-gray-800"
+                                    <a class="{{ request()->routeIs('admin.events') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-white fill-white font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
                                         href="{{ route('admin.events') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                             <path
@@ -125,7 +125,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="{{ request()->routeIs('admin.users') ? 'bg-gray-100 scale-95' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-gray-700 fill-gray-700 font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-gray-800"
+                                    <a class="{{ request()->routeIs('admin.users') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-white fill-white font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
                                         href="{{ route('admin.users') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                             <path
@@ -157,8 +157,8 @@
                                         <span class="flex-shrink-0 block group">
                                             <div class="flex items-center">
                                                 <div>
-                                                    <img class="inline-block object-cover rounded-full h-9 w-9"
-                                                        src="{{ asset('images/seclogo.png') }}" alt="">
+                                                    <img class="inline-block object-cover border border-green-700 rounded-full h-9 w-9"
+                                                        src="{{ asset('images/sample.png') }}" alt="">
                                                 </div>
                                                 <div class="ml-3 text-left">
                                                     <p
@@ -173,7 +173,7 @@
                                             </div>
                                         </span>
                                     </span>
-                                    <div class="text-gray-700 flex items-center flex-col justify-center">
+                                    <div class="text-green-500 flex items-center flex-col justify-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                             class="h-5 w-5 rotate-90">
                                             <path
@@ -197,7 +197,7 @@
                         <!-- === Remove and replace with your own content... === -->
                         <div class="py-4">
                             <div class="rounded-lg">
-                                <header class="text-2xl font-black text-gray-700 ">@yield('title')</header>
+                                <header class="text-2xl font-black text-white ">@yield('title')</header>
                                 <div class="mt-5">
                                     {{ $slot }}
                                 </div>

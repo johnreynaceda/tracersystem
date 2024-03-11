@@ -62,10 +62,41 @@ class AdminDashboard extends Component implements Tables\Contracts\HasTable
                 $record->update([
                     'is_verified' => 1,
                 ]);
+
+                $api_key = '1aaad08e0678a1c60ce55ad2000be5bd';
+                $sender = 'SEMAPHORE';
+                $name = $record->firstname. ' ' . $record->lastname;
+                $ch = curl_init();
+                $parameters = [
+                    'apikey' => $api_key,
+                    'number' => $record->contact_number,
+                    'message' => 'Dear ' . strtoupper($name) . ', your Information as Alumni has been accepted.' . '. Thank you!',
+                    'sendername' => $sender,
+                ];
+                curl_setopt( $ch, CURLOPT_URL,'https://semaphore.co/api/v4/messages' );
+                curl_setopt( $ch, CURLOPT_POST, 1 );
+
+                //Send the parameters set above with the request
+                curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $parameters ) );
+
+                // Receive response from server
+                curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+                $output = curl_exec( $ch );
+                curl_close ($ch);
+
+
                 Notification::make()
                     ->title('Approve successfully')
                     ->success()
                     ->send();
+
+
+                return $output;
+
+
+
+
+
             }),
         ];
     }

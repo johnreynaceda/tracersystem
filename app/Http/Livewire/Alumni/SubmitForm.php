@@ -38,10 +38,7 @@ class SubmitForm extends Component implements Forms\Contracts\HasForms
                             'Female' => 'Female',
                         ]),
                     TextInput::make('batch')->label('Batch')->required()->numeric(),
-                    Select::make('course')->label('3 Years Course')->required()
-                        ->options(Course::where('type', '3 years course')->pluck('name', 'name')->toArray()),
-                    Select::make('short_course')->label('Short term course')->required()
-                        ->options(Course::where('type', 'Short term course')->pluck('name', 'name')->toArray()),
+                    TextInput::make('course')->label('Course')->required(),
                     TextInput::make('contact_number')->label('Contact Number')->required()->numeric()->length(11),
                     Select::make('status')->label('Employment Status')->required()->reactive()
                         ->options([
@@ -73,7 +70,7 @@ class SubmitForm extends Component implements Forms\Contracts\HasForms
                             'Widowed' => 'Widowed',
 
                         ]),
-                    TextInput::make('connected')->label('Currently Connected to')->required(),
+                    // TextInput::make('connected')->label('Currently Connected to')->required(),
                     TextInput::make('nationality')->label('Nationality')->required(),
 
                 ])
@@ -99,10 +96,11 @@ class SubmitForm extends Component implements Forms\Contracts\HasForms
             'middlename' => 'required',
             'gender' => 'required',
             'batch' => 'required',
+            'course' => 'required',
             'contact_number' => 'required',
             'status' => 'required',
             'civil' => 'required',
-            'connected' => 'required',
+            // 'connected' => 'required',
             'nationality' => 'required',
             'region' => 'required',
             'province' => 'required',
@@ -126,11 +124,11 @@ class SubmitForm extends Component implements Forms\Contracts\HasForms
             'gender' => $this->gender,
             'batch' => $this->batch,
             'course' => $this->course,
-            'short_course' => $this->short_course,
+            // 'short_course' => $this->short_course,
             'contact_number' => $this->contact_number,
             'status' => $this->status,
             'civil_status' => $this->civil,
-            'connected' => $this->connected,
+            // 'connected' => $this->connected,
             'nationality' => $this->nationality,
             'region' => $this->region,
             'province' => $this->province,

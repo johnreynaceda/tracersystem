@@ -36,7 +36,8 @@
                 <a href="/">
                     <img src="{{ asset('images/kabuling_logo.png') }}" class="h-20" alt="">
                 </a>
-                <p class="text-xl  text-center text-gray-700 font-black">KABULING LEARNING CENTER INC. TRACER SYSTEM</p>
+                <p class="text-xl  text-center text-gray-700 font-black">KABULING LEARNING CENTER INC. ALUMNI TRACER
+                    SYSTEM</p>
             </div>
             <div class="mt-5">
                 {{ $slot }}

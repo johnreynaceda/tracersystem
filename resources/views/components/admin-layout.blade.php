@@ -60,7 +60,7 @@
                             </p>
                             <ul>
                                 <li>
-                                    <a class="{{ request()->routeIs('admin.dashboard') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-white fill-white font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
+                                    <a class="{{ request()->routeIs('admin.dashboard') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : 'text-white fill-white' }} inline-flex items-center w-full px-4 py-2 mt-1   font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
                                         href="{{ route('admin.dashboard') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                             <path
@@ -73,7 +73,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="{{ request()->routeIs('admin.gallery') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-white fill-white font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
+                                    <a class="{{ request()->routeIs('admin.gallery') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : 'text-white fill-white' }} inline-flex items-center w-full px-4 py-2 mt-1   font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
                                         href="{{ route('admin.gallery') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                             <path
@@ -85,8 +85,8 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a class=" {{ request()->routeIs('admin.course-list') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-white fill-white font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
+                                {{-- <li>
+                                    <a class=" {{ request()->routeIs('admin.course-list') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : 'text-white fill-white' }} inline-flex items-center w-full px-4 py-2 mt-1   font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
                                         href="{{ route('admin.course-list') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                             <path
@@ -97,9 +97,9 @@
                                             Courses
                                         </span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li>
-                                    <a class="{{ request()->routeIs('admin.alumni') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-white fill-white font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
+                                    <a class="{{ request()->routeIs('admin.alumni') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : 'text-white fill-white' }} inline-flex items-center w-full px-4 py-2 mt-1   font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
                                         href="{{ route('admin.alumni') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                             <path
@@ -112,7 +112,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="{{ request()->routeIs('admin.events') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-white fill-white font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
+                                    <a class="{{ request()->routeIs('admin.events') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : 'text-white fill-white' }} inline-flex items-center w-full px-4 py-2 mt-1   font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
                                         href="{{ route('admin.events') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                             <path
@@ -125,7 +125,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="{{ request()->routeIs('admin.users') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : '' }} inline-flex items-center w-full px-4 py-2 mt-1  text-white fill-white font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
+                                    <a class="{{ request()->routeIs('admin.users') ? 'bg-gray-100 scale-95 text-green-700 fill-green-700' : 'text-white fill-white' }} inline-flex items-center w-full px-4 py-2 mt-1   font-medium transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-green-700 hover:fill-green-700"
                                         href="{{ route('admin.users') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                             <path

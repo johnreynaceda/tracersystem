@@ -27,7 +27,7 @@
 </head>
 
 <body class="font-sans antialiased bg-green-800">
-    <div class="absolute top-0 right-0 left-0 bottom-0">
+    <div class="fixed top-0 right-0 left-0 bottom-0">
         <img src="{{ asset('images/school_bg.jpg') }}" class="h-full w-full opacity-20 object-cover" alt="">
     </div>
     <div class="w-full border-b border-white ">
@@ -38,7 +38,7 @@
                     href="/">
                     <img src="{{ asset('images/kabuling_logo.png') }}" class="h-10 w-10" alt="">
                     <span class="lg:text-xl uppecase focus:ring-0">
-                        KLCI TRACER SYSTEM
+                        KLCI ALUMNI TRACER SYSTEM
                     </span>
                 </a>
                 <button @click="open = !open"

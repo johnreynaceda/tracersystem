@@ -20,10 +20,10 @@ return new class extends Migration {
             $table->string('contact_number');
             $table->string('batch');
             $table->string('course')->nullable();
-            $table->string('short_course')->nullable();
+            // $table->string('short_course')->nullable();
             $table->string('status');
             $table->string('civil_status');
-            $table->string('connected');
+            // $table->string('connected');
             $table->string('nationality');
             $table->string('region');
             $table->string('province');

@@ -6,7 +6,7 @@
                 <div class=" mx-auto text-center lg:p-10">
                     <div>
                         <p class="mt-8  text-5xl font-black tracking-tighter text-white">
-                            WELCOME TO KABULING LEARNING CENTER INC. TRACER SYSTEM
+                            WELCOME TO KABULING LEARNING CENTER INC. ALUMNI TRACER SYSTEM
                         </p>
                         <p class="max-w-xl mx-auto mt-4 text-lg tracking-tight text-gray-200">
                             An alumni tracer is a system or program designed to track and maintain contact with former

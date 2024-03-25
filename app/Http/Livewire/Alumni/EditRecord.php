@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Alumni;
 
 use App\Models\AlumniInformation;
 use Filament\Forms;
+use Filament\Forms\Components\ViewField;
 use Illuminate\Contracts\View\View;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\TextInput;
@@ -17,12 +18,39 @@ use App\Models\Course;
 use Livewire\Component;
 use DB;
 
-class SubmitForm extends Component implements Forms\Contracts\HasForms
+class EditRecord extends Component implements Forms\Contracts\HasForms
 {
     use WithFileUploads;
     use Forms\Concerns\InteractsWithForms;
-    public $lastname, $middlename, $firstname, $gender, $contact_number, $batch, $short_course, $course, $status, $civil, $connected, $nationality, $region, $province, $city, $barangay, $street, $attachment;
-    public $employer, $doe, $salary;
+    public $lastname, $middlename, $firstname, $gender, $contact_number, $batch,  $course, $status, $civil, $connected, $nationality, $region, $province, $city, $barangay, $street, $attachment;
+    public $employer, $doe, $salary, $image;
+
+    public function mount(){
+
+
+        $data = AlumniInformation::where('user_id', auth()->user()->id)->first();
+
+        $this->lastname = $data->lastname;
+        $this->middlename = $data->middlename;
+        $this->firstname = $data->firstname;
+        $this->gender = $data->gender;
+        $this->contact_number = $data->contact_number;
+        $this->course = $data->course;
+        $this->batch = $data->batch;
+        $this->status = $data->status;
+        $this->civil = $data->civil_status;
+        $this->nationality = $data->nationality;
+        $this->province = $data->province;
+        $this->region = $data->region;
+        $this->city = $data->city;
+        $this->barangay = $data->barangay;
+        $this->street = $data->street;
+        $this->employer = $data->employer;
+        $this->doe = $data->doe;
+        $this->salary = $data->salary;
+        $this->image = $data->attachment;
+
+    }
 
     protected function getFormSchema(): array
     {
@@ -45,7 +73,7 @@ class SubmitForm extends Component implements Forms\Contracts\HasForms
                             'Employed' => 'Employed',
                             'Unemployed' => 'Unemployed',
                         ]),
-                    FileUpload::make('attachment')
+                        ViewField::make('attachment')->view('filament.forms.photo')
 
                 ])
 
@@ -88,85 +116,38 @@ class SubmitForm extends Component implements Forms\Contracts\HasForms
         ];
     }
 
-    public function submitForm()
-    {
-        $this->validate([
-            'lastname' => 'required',
-            'firstname' => 'required',
-            'middlename' => 'required',
-            'gender' => 'required',
-            'batch' => 'required',
-            'course' => 'required',
-            'contact_number' => 'required',
-            'status' => 'required',
-            'civil' => 'required',
-            // 'connected' => 'required',
-            'nationality' => 'required',
-            'region' => 'required',
-            'province' => 'required',
-            'city' => 'required',
-            'barangay' => 'required',
+    public function saveUpdate(){
+        $datas = AlumniInformation::where('user_id', auth()->user()->id)->first();
 
-            'street' => 'required',
-            'attachment' => 'required',
-            'employer' => $this->status == 'Employed' ? 'required' : '',
-            'doe' => $this->status == 'Employed' ? 'required' : '',
-            'salary' => $this->status == 'Employed' ? 'required' : '',
-
-        ]);
-
-        DB::beginTransaction();
-        $alumni = AlumniInformation::create([
-            'user_id' => auth()->user()->id,
+        $datas->update([
             'lastname' => $this->lastname,
             'firstname' => $this->firstname,
-            'middlename' => $this->middlename,
-            'gender' => $this->gender,
-            'batch' => $this->batch,
-            'course' => $this->course,
-            // 'short_course' => $this->short_course,
-            'contact_number' => $this->contact_number,
-            'status' => $this->status,
-            'civil_status' => $this->civil,
-            // 'connected' => $this->connected,
-            'nationality' => $this->nationality,
-            'region' => $this->region,
-            'province' => $this->province,
-            'city' => $this->city,
-            'barangay' => $this->barangay,
-            'street' => $this->street,
-            'employer' => $this->status == 'Employed' ? $this->employer : null,
-            'doe' => $this->status == 'Employed' ? $this->doe : null,
-            'salary' => $this->status == 'Employed' ? $this->salary : null,
+          'middlename' => $this->middlename,
+           'gender' => $this->gender,
+           'batch' => $this->batch,
+           'course' => $this->course,
+           'contact_number' => $this->contact_number,
+         'status' => $this->status,
+          'civil_status' => $this->civil,
+          'nationality' => $this->nationality,
+        'region' => $this->region,
+          'province' => $this->province,
+          'city' => $this->city,
+          'barangay' => $this->barangay,
+        'street' => $this->street,
 
+       'salary' => $this->salary,
+          'employer' => $this->employer,
+          'doe' => $this->doe,
+            'attachment' => $this->attachment != null ? $this->attachment->store('alumni', 'public') : $datas->attachment,
 
         ]);
-
-        DB::commit();
-        $record = AlumniInformation::where('id', $alumni->id)->first();
-        foreach ($this->attachment as $key => $value) {
-            $record->update([
-                'attachment' => $value->store('alumni', 'public'),
-
-            ]);
-
-            $record->user->update([
-                'is_submitted' => 1,
-            ]);
-
-        }
-
-        Notification::make()
-            ->title('Saved successfully')
-            ->success()
-            ->send();
-        return redirect()->route('alumni.dashboard');
+        sweetalert()->addSuccess('Update Successfully');
+        return redirect()->route('alumni.edit-record');
     }
-
-
 
     public function render()
     {
-        return view('livewire.alumni.submit-form');
+        return view('livewire.alumni.edit-record');
     }
 }

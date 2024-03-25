@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\AlumniInformation;
+use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\Event;
 use Filament\Tables;
@@ -101,12 +103,44 @@ class EventList extends Component implements Tables\Contracts\HasTable
                 'schedule' => $this->schedule,
                 'image_path' => $items->store('event', 'public'),
             ]);
-            Notification::make()
-                ->title('Updated successfully')
-                ->success()
-                ->send();
-            $this->add_modal = false;
+
+
         }
+
+        foreach ( AlumniInformation::where('is_verified', 1)->get() as $key => $value) {
+            $api_key = '1aaad08e0678a1c60ce55ad2000be5bd';
+            $sender = 'SEMAPHORE';
+            $name = $value->firstname. ' ' . $value->lastname;
+            $ch = curl_init();
+            $parameters = [
+                'apikey' => $api_key,
+                'number' => $value->contact_number,
+                'message' => "KLCI Alumni Tracer System Event \r\n Title: ". $this->title." \r\n Description: ".$this->description." \r\n Schedule: ". Carbon::parse($this->schedule)->format('F d, Y'),
+                'sendername' => $sender,
+            ];
+            curl_setopt( $ch, CURLOPT_URL,'https://semaphore.co/api/v4/messages' );
+            curl_setopt( $ch, CURLOPT_POST, 1 );
+
+            //Send the parameters set above with the request
+            curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $parameters ) );
+
+            // Receive response from server
+            curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+            $output = curl_exec( $ch );
+            curl_close ($ch);
+
+
+
+            Notification::make()
+            ->title('Updated successfully')
+            ->success()
+            ->send();
+        $this->add_modal = false;
+
+            return $output;
+        }
+
+
 
     }
 }

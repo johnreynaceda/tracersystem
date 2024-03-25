@@ -6,23 +6,24 @@
                 <div class=" mx-auto text-center lg:p-10">
                     <div>
                         <p class="mt-8  text-5xl font-black tracking-tighter text-white">
-                            OUR VISION
+                            MISSION
                         </p>
                         <p class="text-justify text-lg mt-3 text-gray-100">
-                            Surigao Education Center envisions to be a dynamic educational institution producing
-                            globally competitive professionals through quality education.
+                            The Kabuling Learning Center, Inc. commits itself in the transformation of the society by
+                            nurturing the academic life of the clients pursuing global challenges equipped with skills
+                            and knowledge through the use of advance technologies and as an aid for their spiritual
+                            development.
                         </p>
                     </div>
 
                     <div>
                         <p class="mt-8  text-5xl font-black tracking-tighter text-white">
-                            OUR MISSION
+                            VISION
                         </p>
                         <p class="text-justify text-lg mt-3 text-gray-100">
-                            Surigao Education Center is committed to provide an excellent quality education,
-                            appropriate, relevant and responsive to the needs of our stakeholders through a dynamic
-                            educational system anchored on the institutional core values with competent human resources,
-                            facilities, research and development.
+                            KLC envision as a leading academic institution producing excellent quality graduates that
+                            can uplift their standards of living in a divers community compasses through globally
+                            competitive and holistically developed individuals accompanied with spiritual values.
                         </p>
                     </div>
                 </div>

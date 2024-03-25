@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\AlumniInformation;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +45,15 @@ Route::prefix('alumni')->middleware(['auth'])->group(function () {
     Route::get('/about', function () {
         return view('alumni.about');
     })->name('alumni.about');
+    Route::get('/edit-record', function () {
+      if (AlumniInformation::where('user_id', auth()->user()->id)->get()->count() > 0) {
+     return view('alumni.edit-record');
+
+      }else{
+        sweetalert()->addError('Your Record may not have been uploaded.');
+        return redirect()->back();
+      }
+    })->name('alumni.edit-record');
 
 });
 

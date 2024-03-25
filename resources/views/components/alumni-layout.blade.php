@@ -27,6 +27,7 @@
 </head>
 
 <body class="font-sans antialiased bg-green-800">
+    <x-dialog z-index="z-50" blur="md" align="center" />
     <div class="fixed top-0 right-0 left-0 bottom-0">
         <img src="{{ asset('images/school_bg.jpg') }}" class="h-full w-full opacity-20 object-cover" alt="">
     </div>
@@ -72,7 +73,7 @@
                 </a>
 
                 <div class="inline-flex items-center gap-2 list-none lg:ml-auto">
-                    <div class="relative flex-shrink-0 ml-5" @click.away="open = false" x-data="{ open: false }">
+                    {{-- <div class="relative flex-shrink-0 ml-5" @click.away="open = false" x-data="{ open: false }">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <a href="{{ route('logout') }}"
@@ -82,8 +83,63 @@
                                 Sign out
                             </a>
                         </form>
+                    </div> --}}
+                    <div class="relative flex-shrink-0 ml-5" @click.away="open = false" x-data="{ open: false }">
+                        <div class="flex space-x-3 items-start text-right">
+                            <div>
+                                <h1 class="font-bold uppercase text-white">{{ auth()->user()->name }}</h1>
+                                <h1 class="text-gray-100 border-t leading-3 text-sm">{{ auth()->user()->email }}</h1>
+                            </div>
+                            <button @click="open = !open" type="button"
+                                class="flex bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">
+                                    Open user menu
+                                </span>
+                                @if (\App\Models\AlumniInformation::where('user_id', auth()->user()->id)->count() > 0)
+                                    <img class="object-cover w-12 h-12 rounded-full"
+                                        src="{{ Storage::url(\App\Models\AlumniInformation::where('user_id', auth()->user()->id)->first()->attachment) }}"
+                                        alt="">
+                                @else
+                                    <img class="object-cover w-12 h-12 rounded-full"
+                                        src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                                        alt="">
+                                @endif
+                            </button>
+                        </div>
+
+                        <div x-show="open" x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter-start="transform opacity-0 scale-95"
+                            x-transition:enter-end="transform opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-75"
+                            x-transition:leave-start="transform opacity-100 scale-100"
+                            x-transition:leave-end="transform opacity-0 scale-95"
+                            class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
+                            style="display: none;">
+                            <a href="{{ route('profile.edit') }}"
+                                class="block px-4 py-2 text-sm text-gray-500 hover:text-green-500 hover:font-bold"
+                                role="menuitem" tabindex="-1" id="user-menu-item-0">
+                                Your Profile
+                            </a>
+
+                            <a href="{{ route('alumni.edit-record') }}"
+                                class="block px-4 py-2 text-sm text-gray-500 hover:text-green-500 hover:font-bold"
+                                role="menuitem" tabindex="-1" id="user-menu-item-1">
+                                Update Record
+                            </a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a href="route('logout')"
+                                    onclick="event.preventDefault();
+                                            this.closest('form').submit();"
+                                    class="block px-4 py-2 text-sm text-gray-500 hover:text-red-500 hover:font-bold"
+                                    role="menuitem" tabindex="-1" id="user-menu-item-2">
+                                    Sign out
+                                </a>
+                            </form>
+                        </div>
                     </div>
-                </div>
             </nav>
         </div>
     </div>

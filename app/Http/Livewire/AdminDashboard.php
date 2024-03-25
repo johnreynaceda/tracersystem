@@ -41,7 +41,7 @@ class AdminDashboard extends Component implements Tables\Contracts\HasTable
                     ]),
             Tables\Columns\TextColumn::make('contact_number')->label('CONTACT NUMBER')->searchable(),
             Tables\Columns\TextColumn::make('batch')->label('BATCH')->searchable(),
-            Tables\Columns\TextColumn::make('course')->label('COURSE')->searchable()->formatStateUsing(
+            Tables\Columns\TextColumn::make('course')->label('DEGREE')->searchable()->formatStateUsing(
                 function ($record) {
                     return $record->course == null ? $record->short_course : $record->course;
                 }
@@ -87,6 +87,44 @@ class AdminDashboard extends Component implements Tables\Contracts\HasTable
 
                 Notification::make()
                     ->title('Approve successfully')
+                    ->success()
+                    ->send();
+
+
+                return $output;
+
+
+
+
+
+            }),
+            Action::make('decline')->button()->label('Decline')->icon('heroicon-o-thumb-down')->color('danger')->action(function ($record) {
+
+
+                $api_key = '1aaad08e0678a1c60ce55ad2000be5bd';
+                $sender = 'SEMAPHORE';
+                $name = $record->firstname. ' ' . $record->lastname;
+                $ch = curl_init();
+                $parameters = [
+                    'apikey' => $api_key,
+                    'number' => $record->contact_number,
+                    'message' => 'Dear ' . strtoupper($name) . ', your Information as Alumni has been declined.' . '. Thank you!',
+                    'sendername' => $sender,
+                ];
+                curl_setopt( $ch, CURLOPT_URL,'https://semaphore.co/api/v4/messages' );
+                curl_setopt( $ch, CURLOPT_POST, 1 );
+
+                //Send the parameters set above with the request
+                curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $parameters ) );
+
+                // Receive response from server
+                curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+                $output = curl_exec( $ch );
+                curl_close ($ch);
+
+                $record->delete();
+                Notification::make()
+                    ->title('Declined successfully')
                     ->success()
                     ->send();
 
